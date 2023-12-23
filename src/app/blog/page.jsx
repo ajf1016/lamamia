@@ -9,7 +9,8 @@ async function getData() {
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch data");
+    // throw new Error("Failed to fetch data");
+    return;
   }
 
   return res.json();
@@ -19,7 +20,7 @@ const Blog = async () => {
   const data = await getData();
   return (
     <div className={styles.mainContainer}>
-      {data.map((item) => (
+      {data?.map((item) => (
         <Link href={`/blog/${item._id}`} className={styles.container} key={item.id}>
           <div className={styles.imageContainer}>
             <Image
